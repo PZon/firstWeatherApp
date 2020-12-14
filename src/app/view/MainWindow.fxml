@@ -20,17 +20,17 @@
          <children>
             <TextField id="txtField" fx:id="cityNameInput" alignment="CENTER" layoutX="456.0" layoutY="24.0" prefWidth="181.0" promptText="City Name">
                <font>
-                  <Font size="13.0" />
+                  <Font name="System Bold" size="13.0" />
                </font>
             </TextField>
-            <Button fx:id="findCityButton" layoutX="520.0" layoutY="56.0" mnemonicParsing="false" onAction="#ButtonOnAction" prefWidth="55.0" text="Find" />
-            <Button fx:id="cancelButton" layoutX="581.0" layoutY="56.0" mnemonicParsing="false" onAction="#ButtonOnAction" prefWidth="55.0" text="Cancel" />
-            <Button fx:id="setButton" layoutX="456.0" layoutY="56.0" mnemonicParsing="false" onAction="#ButtonOnAction" prefWidth="55.0" text="Set" />
+            <Button fx:id="findCityButton" layoutX="520.0" layoutY="56.0" mnemonicParsing="false" onAction="#buttonOnAction" prefWidth="55.0" text="Find" />
+            <Button fx:id="cancelButton" layoutX="581.0" layoutY="56.0" mnemonicParsing="false" onAction="#buttonOnAction" prefWidth="55.0" text="Cancel" />
+            <Button fx:id="setButton" layoutX="456.0" layoutY="56.0" mnemonicParsing="false" onAction="#buttonOnAction" prefWidth="55.0" text="Set" />
          </children>
       </Pane>
       <Pane fx:id="weatherInfoPane" layoutX="5.0" layoutY="7.0" prefHeight="500.0" prefWidth="1050.0" AnchorPane.bottomAnchor="500.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="city" alignment="CENTER" layoutX="254.0" layoutY="30.0" prefHeight="58.0" prefWidth="533.0" text="City Name" textFill="#19bfe3">
+            <Label fx:id="city" alignment="CENTER" layoutX="188.0" layoutY="30.0" prefHeight="58.0" prefWidth="669.0" text="City Name" textFill="#19bfe3">
                <font>
                   <Font name="System Bold" size="40.0" />
                </font>
@@ -83,7 +83,7 @@
             </Label>
             <Label fx:id="errors" alignment="CENTER" layoutX="396.0" layoutY="96.0" prefHeight="27.0" prefWidth="260.0" text="errors" textAlignment="CENTER" textFill="#ff8636">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
             <TextField id="txtField" fx:id="invis" alignment="CENTER" editable="false" layoutX="700.0" layoutY="97.0">

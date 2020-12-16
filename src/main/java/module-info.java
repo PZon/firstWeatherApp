@@ -6,9 +6,10 @@ module WeatherApp {
     requires javafx.controls;
     requires javafx.graphics;
     requires javafx.web;
+    requires org.json;
 
     opens app;
     opens app.controller;
     opens app.view;
-   // opens app.model;
+    opens app.model;
 }

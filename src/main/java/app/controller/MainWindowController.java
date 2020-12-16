@@ -20,7 +20,6 @@ import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.concurrent.TimeUnit;
 
 public class MainWindowController implements Initializable {
     WeatherManager weatherManager;
@@ -134,10 +133,10 @@ public class MainWindowController implements Initializable {
     }
 
     private void showError(String txt)  {
-        city.setText(txt);
-        city.setTextFill(Color.RED);
-        city.setStyle("-fx-border-color: red; -fx-border-radius: 13; -fx-border-width: 2; -fx-padding: 2;");
-        FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), city);
+        errors.setText(txt);
+        errors.setTextFill(Color.RED);
+        errors.setStyle("-fx-border-color: red; -fx-border-radius: 13; -fx-border-width: 2; -fx-padding: 2;");
+        FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), errors);
         fadeIn.setToValue(1);
         fadeIn.setFromValue(0);
         fadeIn.play();
@@ -146,7 +145,7 @@ public class MainWindowController implements Initializable {
             PauseTransition pause = new PauseTransition(Duration.seconds(2));
             pause.play();
             pause.setOnFinished(event2 -> {
-                FadeTransition fadeOut = new FadeTransition(Duration.seconds(2), city);
+                FadeTransition fadeOut = new FadeTransition(Duration.seconds(2), errors);
                 fadeOut.setToValue(0);
                 fadeOut.setFromValue(1);
                 fadeOut.play();

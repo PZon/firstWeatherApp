@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -19,9 +20,14 @@ public class AppDemo extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent parent = FXMLLoader.load(getClass().getResource("view/MainWindow.fxml"));
+        stage.setTitle("AppWeather by PZon");
 
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
+       // stage.getScene().getStylesheets().addAll(getClass().getResource("style/style.css").toExternalForm());
         Scene scene = new Scene(parent);
         stage.setScene(scene);
         stage.show();
+        stage.setResizable(false);
+        stage.sizeToScene();
     }
 }

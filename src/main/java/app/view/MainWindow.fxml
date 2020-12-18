@@ -46,14 +46,9 @@
                </font>
             </Label>
             <ImageView fx:id="img" fitHeight="200.0" fitWidth="200.0" layoutX="154.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="temperature" alignment="CENTER" layoutX="192.0" layoutY="448.0" prefHeight="58.0" prefWidth="123.0" text="60ºC" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="temperature" alignment="CENTER" layoutX="192.0" layoutY="448.0" prefHeight="58.0" prefWidth="123.0" text="ºC" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="40.0" />
-               </font>
-            </Label>
-            <Label fx:id="desc" alignment="CENTER" layoutX="170.0" layoutY="494.0" prefHeight="40.0" prefWidth="168.0" text="description" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="570.0" layoutY="127.0" prefHeight="40.0" prefWidth="350.0" text="Additional Information" textAlignment="CENTER" textFill="#3bb3bb">
@@ -86,10 +81,6 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <TextField id="txtField" fx:id="invis" alignment="CENTER" editable="false" layoutX="700.0" layoutY="97.0">
-               <font>
-                  <Font size="15.0" />
-               </font></TextField>
             <Label fx:id="windSpeed" alignment="CENTER" layoutX="800.0" layoutY="200.0" prefHeight="40.0" prefWidth="130.0" text="m/s" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
@@ -111,8 +102,13 @@
                </font>
             </Label>
 
-            
+            <Label fx:id="desc" alignment="CENTER" layoutX="81.0" layoutY="494.0" prefHeight="40.0" prefWidth="500" text="description" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
+
    </children>
 </AnchorPane>

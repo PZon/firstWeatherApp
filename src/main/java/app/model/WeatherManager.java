@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import app.Priv;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -63,8 +64,9 @@ public class WeatherManager {
     }
 
     public WeatherManager(String city) {
+        Priv priv = new Priv();
         this.city = city;
-        this.apiKey = "yourApiKey";
+        this.apiKey = priv.getKey();
     }
 
     //Build a String from the read Json file
@@ -90,35 +92,34 @@ public class WeatherManager {
         }
     }
 
-    public void getWeather(){
-        int d = 0;
-        JSONObject jsonObject;
-        JSONObject jsonData;
-
+    public void getSomeData(){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEEE", Locale.ENGLISH);
         Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE,0);
+        this.day = simpleDateFormat.format(calendar.getTime());
 
+        JSONObject json;
+        JSONObject jsonData;
         try{
-            jsonObject = readJsonFromUrl("http://api.openweathermap.org/data/2.5/weather?q="+city+"&appid="+apiKey+"&lang=eng&units=metric");
+            json = readJsonFromUrl("http://api.openweathermap.org/data/2.5/weather?q="+city+"&appid="+apiKey+"&lang=eng&units=metric");
         }catch (IOException e){
             return;
         }
 
-        jsonData = jsonObject.getJSONObject("main");
+        jsonData = json.getJSONObject("main");
         this.temperature = jsonData.getInt("temp");
         this.pressure = jsonData.get("pressure").toString();
         this.humidity = jsonData.get("humidity").toString();
-        jsonData = jsonObject.getJSONObject("wind");
-        this.windSpeed = jsonData.get("wind").toString();
-        jsonData = jsonObject.getJSONObject("clouds");
+
+        jsonData=json.getJSONObject("wind");
+        this.windSpeed = jsonData.get("speed").toString();
+
+        jsonData=json.getJSONObject("clouds");
         this.cloudiness = jsonData.get("all").toString();
 
-        calendar.add(Calendar.DATE,d);
-        this.day = simpleDateFormat.format(calendar.getTime());
-
-        jsonData = jsonObject.getJSONArray("weather").getJSONObject(0);
-        this.description = jsonData.get("description").toString();
-        this.icon = jsonData.get("icon").toString();
+        jsonData=json.getJSONArray("weather").getJSONObject(0);
+        this.description=jsonData.get("description").toString();
+        this.icon=jsonData.get("icon").toString();
     }
 
 

@@ -4,6 +4,7 @@
  **/
 package app.controller;
 
+import app.model.ImgManager;
 import app.model.WeatherManager;
 import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
@@ -12,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
@@ -63,9 +65,6 @@ public class MainWindowController implements Initializable {
     private Label errors;
 
     @FXML
-    private TextField invis;
-
-    @FXML
     private Label windSpeed;
 
     @FXML
@@ -90,7 +89,7 @@ public class MainWindowController implements Initializable {
         }else if(actionEvent.getSource() == cancelButton){
             cityNameInput.setText(initialCity);
             bottomSet(false);
-            invis.requestFocus();
+
         }
     }
 
@@ -106,13 +105,11 @@ public class MainWindowController implements Initializable {
                 weatherManager = new WeatherManager(this.citySet);
                 displayWeather();
                 bottomSet(false);
-                invis.requestFocus();
             }catch (Exception e){
                 city.setText("Error");
-                city.setTextFill(Color.TOMATO);
+                city.setTextFill(Color.DARKRED);
                 showError("No location found, please try again");
                 reset();
-                invis.requestFocus();
             }
         }
     }
@@ -127,9 +124,7 @@ public class MainWindowController implements Initializable {
         cloudiness.setText("");
         pressure.setText("");
         humidity.setText("");
-    }
-
-    private void displayWeather() {
+        city.setTextFill(Color.LIGHTSKYBLUE);
     }
 
     private void showError(String txt)  {
@@ -169,14 +164,13 @@ public class MainWindowController implements Initializable {
         setButton.setVisible(false);
         cancelButton.setVisible(false);
         errors.setText("");
-        invis.requestFocus();
         weatherManager = new WeatherManager(citySet);
 
         try{
             displayWeather();
         }catch (Exception e){
             city.setText("Error - internet connection");
-            city.setTextFill(Color.DARKSALMON);
+            city.setTextFill(Color.DARKRED);
             showError("No internet connection");
             reset();
             findCityButton.setDisable(true);
@@ -188,6 +182,19 @@ public class MainWindowController implements Initializable {
                 setPressed();
             }
         });
+    }
+
+    public void displayWeather(){
+        weatherManager.getSomeData();
+        day.setText(weatherManager.getDay().toUpperCase());
+        city.setText(weatherManager.getCity().toUpperCase());
+        temperature.setText(weatherManager.getTemperature().toString()+" °C");
+        humidity.setText(weatherManager.getHumidity()+" %");
+        pressure.setText(weatherManager.getPressure()+" hpa");
+        windSpeed.setText(weatherManager.getWindSpeed()+" m/s");
+        cloudiness.setText(weatherManager.getCloudiness()+ "%");
+        desc.setText(weatherManager.getDescription().toUpperCase());
+        img.setImage(new Image(getClass().getResourceAsStream(ImgManager.setImg(weatherManager.getIcon()))));
     }
 }
 

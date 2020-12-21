@@ -22,7 +22,7 @@ public class AppDemo extends Application {
         Parent parent = FXMLLoader.load(getClass().getResource("view/MainWindow.fxml"));
         stage.setTitle("AppWeather by PZon");
 
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/icon.png")));
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/icons/phiSmall2.png")));
        // stage.getScene().getStylesheets().addAll(getClass().getResource("style/style.css").toExternalForm());
         Scene scene = new Scene(parent);
         stage.setScene(scene);
